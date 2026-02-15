@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公众号写作助手</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 公众号写作助手</h1>
+            <p class="subtitle">协作式学习笔记写作工具</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab active" data-tab="write">✍️ 写作</button>
+            <button class="tab" data-tab="deai">🎨 去AI味</button>
+            <button class="tab" data-tab="import">📥 导入</button>
+            <button class="tab" data-tab="preview">👀 预览</button>
+        </nav>
+
+        <!-- 写作模块 -->
+        <div class="tab-content active" id="write-tab">
+            <div class="section">
+                <h2>当前写作状态</h2>
+                <div id="writing-status" class="status-box">
+                    <p>暂无进行中的文章</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>开始新文章</h2>
+                <button class="btn btn-primary" id="start-new-article">
+                    🚀 开始新文章
+                </button>
+            </div>
+
+            <div class="section workflow-steps" id="workflow-section" style="display: none;">
+                <h3>写作流程</h3>
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>确定核心观点</h4>
+                        <p>明确文章最核心的观点和写作动机</p>
+                        <button class="btn btn-sm" data-step="1">开始</button>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>设计大纲</h4>
+                        <p>构建文章结构，确定章节划分</p>
+                        <button class="btn btn-sm" data-step="2">开始</button>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>逐章撰写</h4>
+                        <p>按章节撰写，AI提问引导思考</p>
+                        <button class="btn btn-sm" data-step="3">开始</button>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>整体润色</h4>
+                        <p>检查逻辑连贯性，应用去AI味技巧</p>
+                        <button class="btn btn-sm" data-step="4">开始</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 去AI味模块 -->
+        <div class="tab-content" id="deai-tab">
+            <div class="section">
+                <h2>AI味检测</h2>
+                <p>粘贴或选择文本进行AI味检测</p>
+                <textarea id="deai-input" placeholder="在此粘贴文本..." rows="8"></textarea>
+                <button class="btn btn-primary" id="check-ai-style">
+                    🔍 检测AI味
+                </button>
+            </div>
+
+            <div class="section" id="deai-results" style="display: none;">
+                <h3>检测结果</h3>
+                <div id="deai-score" class="score-box"></div>
+                <div id="deai-suggestions"></div>
+                <button class="btn btn-secondary" id="auto-fix">
+                    ✨ 自动优化
+                </button>
+            </div>
+        </div>
+
+        <!-- 导入模块 -->
+        <div class="tab-content" id="import-tab">
+            <div class="section">
+                <h2>导入内容</h2>
+                <div class="import-options">
+                    <button class="btn btn-block" id="import-webpage">
+                        🌐 从当前网页导入
+                    </button>
+                    <button class="btn btn-block" id="import-conversation">
+                        💬 导入AI对话
+                    </button>
+                    <button class="btn btn-block" id="import-selection">
+                        📋 导入选中内容
+                    </button>
+                </div>
+            </div>
+
+            <div class="section" id="import-preview" style="display: none;">
+                <h3>预览导入内容</h3>
+                <div id="import-content" class="preview-box"></div>
+                <button class="btn btn-primary" id="confirm-import">
+                    ✅ 确认导入
+                </button>
+            </div>
+        </div>
+
+        <!-- 预览模块 -->
+        <div class="tab-content" id="preview-tab">
+            <div class="section">
+                <h2>文章预览</h2>
+                <div class="preview-actions">
+                    <button class="btn btn-secondary" id="copy-markdown">
+                        📋 复制Markdown
+                    </button>
+                    <button class="btn btn-secondary" id="open-markdownnice">
+                        🎨 在markdownnice预览
+                    </button>
+                    <button class="btn btn-secondary" id="export-article">
+                        💾 导出文章
+                    </button>
+                </div>
+                <div id="article-preview" class="preview-box">
+                    <p>暂无内容</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p class="help-text">
+                💡 提示：使用快捷键 Alt+W 快速打开写作助手
+            </p>
+        </footer>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
